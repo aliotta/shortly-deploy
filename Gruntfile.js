@@ -30,6 +30,17 @@ module.exports = function(grunt) {
     },
 
     uglify: {
+      options: {
+        mangle: true
+      },
+      my_target: {
+        files: [
+        {
+          src: 'public/dist/built.js',
+          dest: 'public/dist/built.min.js'
+        }]
+      }
+
     },
 
     jshint: {
@@ -114,6 +125,7 @@ module.exports = function(grunt) {
   ////////////////////////////////////////////////////
 
   grunt.registerTask('test', [
+    'jshint',
     'mochaTest'
   ]);
 
@@ -130,9 +142,13 @@ module.exports = function(grunt) {
 
   grunt.registerTask('deploy', [
       // add your production server task here
+    'concat',
+    'uglify',
+    'cssmin',
+    'test'
   ]);
 
-  grunt.registerTask('default', ['uglify']);
+  grunt.registerTask('default', ['deploy']);
 
 
 };
