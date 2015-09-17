@@ -22,4 +22,5 @@ var User = db.Model.extend({
   }
 });
 
+var User = mongoose.model('User', db.userSchema);
 module.exports = User;
