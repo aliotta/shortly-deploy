@@ -7,7 +7,7 @@ var crypto = require('crypto');
 
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/app', function(err){
+mongoose.connect('mongodb://DBLab:tCvk0hqVfe12_bj9megq8UUtvvm9y1YxlIIgYc0bJe8-@ds042888.mongolab.com:42888/DBLab', function(err){
   if (err) {
     console.log('error in connect in config.js', err);
     throw err;
