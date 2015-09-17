@@ -2,6 +2,7 @@ var Bookshelf = require('bookshelf');
 var path = require('path');
 var bcrypt = require('bcrypt-nodejs');
 var Promise = require('bluebird');
+var crypto = require('crypto');
 
 
 
@@ -26,7 +27,6 @@ var urlSchema = new Schema({
 });
 
 urlSchema.pre('save', function(next){
-    console.log("Pre url")
     var shasum = crypto.createHash('sha1');
     shasum.update(this.url);
     this.code = shasum.digest('hex').slice(0, 5);
@@ -39,14 +39,12 @@ var userSchema = new Schema({
 });
 
 userSchema.pre('save', function(next){
-  console.log("pre hashPassword");
   this.hashPassword();
 
   next();
 });
 
 userSchema.methods.hashPassword = function(){
-  console.log("hashPassword");
   var cipher = Promise.promisify(bcrypt.hash);
   return cipher(this.password, null, null).bind(this)
     .then(function(hash) {

@@ -1,3 +1,4 @@
+console.log("mordor");
 var request = require('supertest');
 var express = require('express');
 var expect = require('chai').expect;
@@ -16,6 +17,7 @@ var Link = require('../app/models/link');
 ('', function() {
 
   beforeEach(function(done) {
+    console.log("before Each")
     // Log out currently signed in user
     request(app)
       .get('/logout')
@@ -98,7 +100,7 @@ var Link = require('../app/models/link');
           title: 'Funny pictures of animals, funny dog pictures',
           base_url: 'http://127.0.0.1:4568',
           visits: 0
-        })
+        });
 
         link.save(function() {
           done();
@@ -106,7 +108,7 @@ var Link = require('../app/models/link');
       });
 
       it('Returns the same shortened code if attempted to add the same URL twice', function(done) {
-        var firstCode = link.code
+        var firstCode = link.code;
         request(app)
           .post('/links')
           .send({
@@ -200,7 +202,7 @@ var Link = require('../app/models/link');
           expect(res.headers.location).to.equal('/');
           request(app)
             .get('/logout')
-            .expect(200)
+            .expect(200);
         })
         .end(done);
     });
@@ -241,7 +243,7 @@ var Link = require('../app/models/link');
         .expect(function(res) {
           expect(res.headers.location).to.equal('/login');
         })
-        .end(done)
+        .end(done);
       });
 
   }); // Account Login
