@@ -14,7 +14,7 @@ var Link = require('../app/models/link');
 
 var User = require('../app/models/user');
 var Link = require('../app/models/link');
-('', function() {
+describe('', function() {
 
   beforeEach(function(done) {
     console.log("before Each")
@@ -44,7 +44,7 @@ var Link = require('../app/models/link');
     });
 
     describe('Shortening links:', function() {
-
+      this.timeout(5000)
       it('Responds with the short code', function(done) {
         request(app)
           .post('/links')
