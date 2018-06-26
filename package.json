@@ -13,9 +13,9 @@
     "chai": "^1.9.0",
     "crypto": "0.0.3",
     "ejs": "~0.8.5",
-    "express": "~3.4.8",
+    "express": "~4.16.0",
     "express-partials": "~0.2.0",
-    "forever": "^0.10.11",
+    "forever": "^0.13.0",
     "grunt": "^0.4.4",
     "grunt-contrib-concat": "^0.3.0",
     "grunt-contrib-cssmin": "^0.9.0",
@@ -29,13 +29,17 @@
     "mocha": "^1.17.1",
     "mongoose": "^3.8.35",
     "request": "^2.34.0",
-    "sqlite3": "~3.0.10"
+    "sqlite3": "~3.0.10",
+    "snyk": "^1.85.0"
   },
   "devDependencies": {
     "supertest": "^0.10.0"
   },
   "scripts": {
     "start": "./node_modules/.bin/nodemon --ignore node_modules server.js",
-    "test": "node server.js & ./node_modules/.bin/mocha --bail --reporter nyan test/ServerSpec.js; pkill -n node;"
-  }
+    "test": "node server.js & ./node_modules/.bin/mocha --bail --reporter nyan test/ServerSpec.js; pkill -n node;",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
+  },
+  "snyk": true
 }
