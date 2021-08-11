@@ -29,7 +29,7 @@
     "mocha": "^1.17.1",
     "mongoose": "^3.8.35",
     "request": "^2.34.0",
-    "sqlite3": "~3.0.10"
+    "sqlite3": "~4.0.0"
   },
   "devDependencies": {
     "supertest": "^0.10.0"
