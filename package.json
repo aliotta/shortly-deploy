@@ -27,7 +27,7 @@
     "grunt-shell": "^0.6.4",
     "knex": "~0.5.7",
     "mocha": "^1.17.1",
-    "mongoose": "^3.8.35",
+    "mongoose": "^6.4.6",
     "request": "^2.34.0",
     "sqlite3": "~3.0.10"
   },
